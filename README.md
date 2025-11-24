@@ -41,8 +41,6 @@ CocoaMoniliaDataSet/
       ├── m1/
       ├── m2/
       ├── m3/
-
-
 ```
 Each directory contains images and annotations, along with their respective class labels. 
 
