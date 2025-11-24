@@ -1,6 +1,8 @@
 # CocoaMoniliaDataSet
 **CocoaMoniliaDataset v1** is an annotated RGB image dataset created to support computer vision task for the detection of *Moniliophthora roreri* in cocoa pods. The dataset includes four classes: (1) Healthy cocoa pods labeled as **h0**, (2) First cycle of Monilia (Humps) labeled as **m1**, (3) It is a combination of the second and third cycle of the disease (Brown and oily spots) labeled as **m2**, and (4) Fourth cycle of Monilia (Sporulation) labeled as **m3**. The annotation formats are provided in **COCO 1.0**, **YOLO**, and **Segmentation Maks 1.1**.
 
+<a href="https://colab.research.google.com/drive/1C4zdLG0hXHoqtQQvP15NHhZAWn_U4jQI?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+
 ## Dataset Availability on Zenodo
 
 **Repository name:**  Zenodo
