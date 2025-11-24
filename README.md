@@ -123,13 +123,12 @@ if isinstance(segmentation, list):
     yolo_lines.append(line)
 ```
 
-### Method to split the dataset for training, validation, and test
-
-[CocoaMoniliaDataSet.ipynb](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb).
-
+### Methods to split the dataset
 
 
 <img width="697" height="117" alt="image" src="https://github.com/user-attachments/assets/2c573c83-bb2a-44dd-9800-65331baad92e" />
+
+[CocoaMoniliaDataSet.ipynb](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb) notebook includes  methods to split the dataset into training, validation, and test for both object detection and instance segmentation. The methods create a dataset structure, as is illustrated below. By default, YOLO expects this structure. 
 
 
 ```
