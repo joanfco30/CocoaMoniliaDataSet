@@ -125,7 +125,7 @@ if isinstance(segmentation, list):
 
 ### Method to split the dataset for training, validation, and test
 
-[CocoaMoniliaDataSet.ipynb]([https://zenodo.org/records/17156052](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb)).
+[CocoaMoniliaDataSet.ipynb](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb).
 
 
 
