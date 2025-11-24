@@ -1,16 +1,16 @@
 # CocoaMoniliaDataSet
-**CocoaMoniliaDataset v1** is an annotated RGB image dataset created to support a computer vision task for the detection of *MoniMoniliophthora roreri* in cocoa pods. **CocoaMoniliaDataset v1** involved the labeling of four classes: (1) Healthy cocoa pods labeled as **h0**, (2) First cycle of Monilia (Humps) labeled as **m1**, (3) It is a combination of the second and third cycle of the disease (Brown and oily spots) labeled as **m2**, and (4) Fourth cycle of Monilia (Sporulation) labeled as **m3**. The annotation formats are provided in **COCO 1.0**, **YOLO**, and **Segmentation Maks 1.1**.
+**CocoaMoniliaDataset v1** is an annotated RGB image dataset created to support computer vision task for the detection of *Moniliophthora roreri* in cocoa pods. The dataset includes four classes: (1) Healthy cocoa pods labeled as **h0**, (2) First cycle of Monilia (Humps) labeled as **m1**, (3) It is a combination of the second and third cycle of the disease (Brown and oily spots) labeled as **m2**, and (4) Fourth cycle of Monilia (Sporulation) labeled as **m3**. The annotation formats are provided in **COCO 1.0**, **YOLO**, and **Segmentation Maks 1.1**.
 
-## The dataset is available at the Zenodo repository
+## Dataset Availability on Zenodo
 
-Repository name:  Zenodo
+**Repository name:**  Zenodo
 
-Data identification number:  [10.5281/zenodo.17156051](https://zenodo.org/records/17156052).
+**Dataset DOI:**  [10.5281/zenodo.17156051](https://zenodo.org/records/17156052).
 
-Direct URL to data: [https://zenodo.org/records/17156052](https://zenodo.org/records/17156052) 
+**Direct download URL:** [https://zenodo.org/records/17156052](https://zenodo.org/records/17156052) 
 
 ## **CocoaMoniliaDataset v1** structure
-The repository follows the next structure.
+The dataset follows the structure shown below:
 ```
 CocoaMoniliaDataSet/
 │
@@ -42,26 +42,26 @@ CocoaMoniliaDataSet/
       ├── m2/
       ├── m3/
 ```
-Each directory contains images and annotations, along with their respective class labels. 
+Each directory contains images and their annotations organized by class.
 
 ## Class Definitions
 
 
 | Label  | Class name |Description |
 | ------------- | ------------- |------------- |
-|h0  | Healty  | Cocoa pods without visible *Monilia* symptoms  |
+|h0  | Healthy  | Cocoa pods without visible *Monilia* symptoms  |
 | m1  | Humps  | First cycle of Monilia   | 
 | m2  | Brown/oily spots  | Second-third cycle of *Monilia*  | 
-| m3  | Sporulation | Fourth cycle pf *Monilia*  | 
+| m3  | Sporulation | Fourth cycle of *Monilia*  | 
 
 
-## Download and unzip the dataset.
+## Download and Unzip the Dataset.
 ```
 !wget -O dataset.zip "https://zenodo.org/records/17156052/files/CocoaMoniliaDataSet.zip?download=1"
 !unzip dataset.zip
 ```
 
-## Example for loading COCO Annotation format
+## Example: Loading COCO Annotation format
 
 ```ruby
 from pycocotools.coco import COCO
@@ -70,16 +70,16 @@ image_ids = coco.getImgIds()
 ann_ids = coco.getAnnIds(imgIds=image_ids[0])
 annotations = coco.loadAnns(ann_ids)
 ```
-## Example for loading COCO Annotation to convert to YOLO object detection format
+## Example: Converting COCO to YOLO Bounding Box Format
 
 In YOLO object detection format, each image has a corresponding txt file with a single line with the box coordinates for each bounding box. The format of each row is the following:
 
 ```
 <class_id> <center_x> <center_y> <width> <height> 
 ```
-### The next code is a way to iterate over annotations to convert COCO format to YOLO object detection.
+Example code:
 
-```ruby
+```python
 for ann in coco["annotations"]:
   image_id = ann["image_id"]
   cat_id = ann["category_id"]
@@ -97,7 +97,7 @@ for ann in coco["annotations"]:
     yolo_line = f"{cat_id - 1} {cx:.6f} {cy:.6f} {w_norm:.6f} {h_norm:.6f}
 ```
 
-## Example for loading COCO Annotation to convert YOLO instance segmentation format
+## Example: Converting COCO to YOLO Instance Segmentation Format 
 
 In YOLO instance segmentation, each image has a corresponding txt file with coordinates that outline each object in the image. The format of each row is the following:
 
@@ -107,7 +107,7 @@ In YOLO instance segmentation, each image has a corresponding txt file with coor
 
 ### The next code is a way to iterate over annotations to convert COCO format to YOLO instance segmentation.
 
-```ruby
+```python
 if isinstance(segmentation, list):
   for seg in segmentation:
     if len(seg) < 6:
@@ -123,13 +123,12 @@ if isinstance(segmentation, list):
     yolo_lines.append(line)
 ```
 
-### Methods to split the dataset
+### Dataset Splitting Methods
 
 
 <img width="697" height="117" alt="image" src="https://github.com/user-attachments/assets/2c573c83-bb2a-44dd-9800-65331baad92e" />
 
-[CocoaMoniliaDataSet.ipynb](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb) notebook includes  methods to split the dataset into training, validation, and test for both object detection and instance segmentation. The methods create a dataset structure, as is illustrated below. By default, YOLO expects this structure. 
-
+The notebook [CocoaMoniliaDataSet.ipynb](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb) includes functions for creating train/validation/splits for both object detection and instance segmentation. YOLO expects the following structure:
 
 ```
 │── DataSet_split_seg/
@@ -144,10 +143,10 @@ if isinstance(segmentation, list):
            ├── test/
            ├── val/
 ```
-## YAML file configuration
+## YAML File Configuration Example
 
 YAML file defines the dataset path and class names. The label files, according to the task, contain normalized bounding box coordinates with their respective class, or the polygon coordinates of its mask. 
-```ruby
+```python
 WORK_DIR = Path("/content/DataSet_split_bbox")
 
 yaml_conf_file = f"""
@@ -177,16 +176,16 @@ names:
   2: m2
   3: m3
 ```
-# Usage
+# Training a YOLO Model
 
-Once the YAML file is configured, the next step is to train a YOLO model on the CocoaMoniliaDataset using the following train example. 
-```ruby
+ 
+```python
 from ultralytics import YOLO
 
-# Load a pretrained YOLO11n model
 model = YOLO("yolo11n.pt")
-
-# Train the model on CocoaMoniliaDataset
 results = model.train(data="yolovx.yaml", epochs=100, imgsz=640)
 ```
-
+## Citation
+```APA
+Alvarado Molina, J. F., Restrepo-Arias, J. F., Velásquez, D., Branch Bedoya, J. W., & Maiza, M. (2025). CocoaMoniliaDataSet [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17156052
+```
