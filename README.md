@@ -97,7 +97,7 @@ for ann in coco["annotations"]:
     yolo_line = f"{cat_id - 1} {cx:.6f} {cy:.6f} {w_norm:.6f} {h_norm:.6f}
 ```
 
-## Example for loading COCO Annotation to convert YOLO instance segmentation
+## Example for loading COCO Annotation to convert YOLO instance segmentation format
 
 In YOLO instance segmentation, each image has a corresponding txt file with coordinates that outline each object in the image. The format of each row is the following:
 
@@ -144,3 +144,49 @@ if isinstance(segmentation, list):
            ├── test/
            ├── val/
 ```
+## YAML file configuration
+
+YAML file defines the dataset path and class names. The label files, according to the task, contain normalized bounding box coordinates with their respective class, or the polygon coordinates of its mask. 
+```ruby
+WORK_DIR = Path("/content/DataSet_split_bbox")
+
+yaml_conf_file = f"""
+path: {WORK_DIR}
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: h0
+  1: m1
+  2: m2
+  3: m3
+"""
+
+(WORK_DIR / "yolovx.yaml").write_text(yaml_conf_file)
+```
+Output
+```
+path: /content/DataSet_split_bbox
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: h0
+  1: m1
+  2: m2
+  3: m3
+```
+# Usage
+
+Once the YAML file is configured, the next step is to train a YOLO model on the CocoaMoniliaDataset using the following train example. 
+```ruby
+from ultralytics import YOLO
+
+# Load a pretrained YOLO11n model
+model = YOLO("yolo11n.pt")
+
+# Train the model on CocoaMoniliaDataset
+results = model.train(data="yolovx.yaml", epochs=100, imgsz=640)
+```
+
