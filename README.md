@@ -5,9 +5,9 @@
 
 Repository name:  Zenodo
 
-Data identification number:   [10.5281/zenodo.17156051](#DOI).
+Data identification number:  [#DOI](10.5281/zenodo.17156051).
 
-Direct URL to data:  [https://zenodo.org/records/17156052](#URL).
+Direct URL to data: [#URL](https://zenodo.org/records/17156052) 
 
 ## **CocoaMoniliaDataset v1** structure
 The repository follows the next structure.
