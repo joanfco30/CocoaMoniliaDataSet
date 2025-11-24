@@ -69,7 +69,6 @@ coco = COCO("COCO_annotations/instances_m2.json")
 image_ids = coco.getImgIds()
 ann_ids = coco.getAnnIds(imgIds=image_ids[0])
 annotations = coco.loadAnns(ann_ids)
-
 ```
 ## Example for loading COCO Annotation to convert to YOLO object detection format
 
@@ -112,14 +111,37 @@ In YOLO instance segmentation, each image has a corresponding txt file with coor
 if isinstance(segmentation, list):
   for seg in segmentation:
     if len(seg) < 6:
-      continue  # invalid polygon
-                    # Normalize coordinates
+      continue  
+                  
     norm_coords = []
     for i in range(0, len(seg), 2):
       x = seg[i] / img_w
       y = seg[i + 1] / img_h
       norm_coords.append(f"{x:.6f} {y:.6f}")
 
-    line = f"{cat_id - 1} " + " ".join(norm_coords)  # YOLO class ids start at 0
+    line = f"{cat_id - 1} " + " ".join(norm_coords)  
     yolo_lines.append(line)
+```
+
+### Method to split the dataset for training, validation, and test
+
+[CocoaMoniliaDataSet.ipynb]([https://zenodo.org/records/17156052](https://github.com/joanfco30/CocoaMoniliaDataSet/blob/main/CocoaMoniliaDataSet.ipynb)).
+
+
+
+<img width="697" height="117" alt="image" src="https://github.com/user-attachments/assets/2c573c83-bb2a-44dd-9800-65331baad92e" />
+
+
+```
+│── DataSet_split_seg/
+│     ├─ images/
+│     │    ├── train/
+│     │    ├── test/
+│     │    ├── val/
+│     │
+│     │
+│     ├─ labels/
+           ├── train/
+           ├── test/
+           ├── val/
 ```
