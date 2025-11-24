@@ -65,13 +65,38 @@ Each directory contains images and their annotations organized by class.
 
 ## Example: Loading COCO Annotation format
 
-```ruby
+```python
 from pycocotools.coco import COCO
 coco = COCO("COCO_annotations/instances_m2.json")
 image_ids = coco.getImgIds()
 ann_ids = coco.getAnnIds(imgIds=image_ids[0])
 annotations = coco.loadAnns(ann_ids)
 ```
+## Example: Loading Segmentation Mask Format
+
+```python
+# Paths
+IMAGE_DIR = Path("CocoaMoniliaDataSet/cocoapods_images/m1")
+MASK_CLASS_DIR = Path("CocoaMoniliaDataSet/mask_segmentation/SegmentationClassm1")
+MASK_OBJ_DIR   = Path("CocoaMoniliaDataSet/mask_segmentation/segmentationObjectm1")
+
+image_id = "1728667861354"  # example
+
+# Load RGB image
+
+rgb = cv.imread(str(IMAGE_DIR / f"{image_id}.jpg"))
+rgb = cv.cvtColor(rgb, cv.COLOR_BGR2RGB)
+# Load class mask
+
+class_mask = cv.imread(str(MASK_CLASS_DIR / f"{image_id}.png"), cv.IMREAD_COLOR)
+class_mask = cv.cvtColor(class_mask, cv.COLOR_BGR2RGB) # Convert from BGR to RGB to correct RGB visualization
+
+# Load instance mask
+
+instance_mask = cv.imread(str(MASK_OBJ_DIR / f"{image_id}.png"))
+instance_mask = cv.cvtColor(instance_mask, cv.COLOR_BGR2RGB) # Convert from BGR to RGB to correct RGB visualization
+```
+
 ## Example: Converting COCO to YOLO Bounding Box Format
 
 In YOLO object detection format, each image has a corresponding txt file with a single line with the box coordinates for each bounding box. The format of each row is the following:
