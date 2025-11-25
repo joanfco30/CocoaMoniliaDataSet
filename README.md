@@ -96,6 +96,14 @@ class_mask = cv.cvtColor(class_mask, cv.COLOR_BGR2RGB) # Convert from BGR to RGB
 instance_mask = cv.imread(str(MASK_OBJ_DIR / f"{image_id}.png"))
 instance_mask = cv.cvtColor(instance_mask, cv.COLOR_BGR2RGB) # Convert from BGR to RGB to correct RGB visualization
 ```
+## Label map of the segmentation mask 1.1 annotation
+
+| Classes  | RGB color value |
+| ------------- | ------------- |
+| h0  | (61,242,60)  |
+| m1  | (250,50,83)  |
+| m2  | (245,147,49)  |
+| m3  | (50,183,250)  |
 
 ## Example: Converting COCO to YOLO Bounding Box Format
 
