@@ -7,9 +7,10 @@
 
 **Repository name:**  Zenodo
 
-**Dataset DOI:**  [10.5281/zenodo.17156051](https://zenodo.org/records/17156052).
+**Dataset DOI:**  [10.5281/zenodo.17716661](https://doi.org/10.5281/zenodo.17716661).
 
-**Direct download URL:** [https://zenodo.org/records/17156052](https://zenodo.org/records/17156052) 
+
+**Direct download URL:** [https://zenodo.org/records/17716661](https://zenodo.org/records/17716661) 
 
 ## **CocoaMoniliaDataset v1** structure
 The dataset follows the structure shown below:
