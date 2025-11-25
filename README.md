@@ -217,8 +217,14 @@ names:
 ```python
 from ultralytics import YOLO
 
-model = YOLO("yolo11n.pt")
-results = model.train(data="yolovx.yaml", epochs=100, imgsz=640)
+model = YOLO("yolo11l.pt")
+results = model.train(data="yolovx.yaml", epochs=50, imgsz=640, device=0)
+```
+Metrics
+```python
+mAP50-95: 0.9349144024551777
+mAP50: 0.9431373041805193
+IoU (mean across classes): 0.9349144024551777
 ```
 ## Citation
 ```APA
