@@ -222,9 +222,9 @@ results = model.train(data="yolovx.yaml", epochs=50, imgsz=640, device=0)
 ```
 Metrics
 ```python
-mAP50-95: 0.9349144024551777
-mAP50: 0.9431373041805193
-IoU (mean across classes): 0.9349144024551777
+mAP50-95: 0.8949005285588628
+mAP50: 0.9104535766547039
+IoU (mean across classes): 0.8949005285588629
 ```
 ## Citation
 ```APA
