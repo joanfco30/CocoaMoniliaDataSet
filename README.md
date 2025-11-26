@@ -229,5 +229,5 @@ IoU (mean across classes): 0.8949005285588629
 ```
 ## Citation
 ```APA
-Alvarado Molina, J. F., Restrepo-Arias, J. F., Velásquez, D., Branch Bedoya, J. W., & Maiza, M. (2025). CocoaMoniliaDataSet [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17156052
+Alvarado Molina, J. F., Restrepo-Arias, J. F., Velásquez, D., Branch Bedoya, J. W., & Maiza, M. (2025). CocoaMoniliaDataSet [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17716661
 ```
