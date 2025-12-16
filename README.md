@@ -227,6 +227,16 @@ mAP50-95: 0.8949005285588628
 mAP50: 0.9104535766547039
 IoU (mean across classes): 0.8949005285588629
 ```
+
+## License
+
+CocoaMoniliaDataSet is distributed under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0).
+
+
+[https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/) 
+
+
 ## Citation
 ```APA
 Alvarado Molina, J. F., Restrepo-Arias, J. F., Velásquez, D., Branch Bedoya, J. W., & Maiza, M. (2025). CocoaMoniliaDataSet [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17716661
